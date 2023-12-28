@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " w ",
+    "wsw",
+    "wcw"
+    ],
+  "key":{
+    "w": {
+      "item": "minecraft:white_wool"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "mccamping:tent"
+  }
+}

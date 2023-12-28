@@ -1,6 +1,8 @@
 package net.harryhirsch4.mccamping;
 
 import com.mojang.logging.LogUtils;
+import net.harryhirsch4.mccamping.block.ModBlocks;
+import net.harryhirsch4.mccamping.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,6 +25,9 @@ public class MCCamping {
 
     public MCCamping() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

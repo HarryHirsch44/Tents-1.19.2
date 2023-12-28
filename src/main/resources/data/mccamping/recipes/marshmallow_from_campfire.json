@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 400,
+  "experience": 0.4,
+  "ingredient": {
+    "item": "mccamping:raw_marshmallow"
+  },
+  "result": "mccamping:marshmallow"
+}
