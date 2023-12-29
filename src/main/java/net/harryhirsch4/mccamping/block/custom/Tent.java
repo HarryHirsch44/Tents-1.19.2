@@ -24,7 +24,7 @@ public class Tent extends Block {
     public static final BooleanProperty ISOPEN = BooleanProperty.create("isopen");
 
     private static final VoxelShape SHAPE = Stream.of(
-            Block.box(0,0,0,48,32,32))
+            Block.box(0,0,0,32,32,16))
             .reduce((v1,v2) -> Shapes.join(v1,v2, BooleanOp.OR)).get();
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
@@ -44,9 +44,9 @@ public class Tent extends Block {
     public InteractionResult use(BlockState state, Level level, BlockPos pos,
                                  Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(level.isClientSide && hand == InteractionHand.MAIN_HAND){
-            /*level.setBlock(pos, state.cycle(ISOPEN), 3);
+            level.setBlock(pos, state.cycle(ISOPEN), 3);
 
-            long worldTime = level.getDayTime() % 24000; // Get current world time in ticks
+            /*long worldTime = level.getDayTime() % 24000; // Get current world time in ticks
             boolean isRaining = level.isRaining();
             boolean isDaytime;
             if(isRaining){
@@ -67,13 +67,12 @@ public class Tent extends Block {
             }*/
 
             //if(!level.isDay() || level.isThundering()) {
-                player.startSleepInBed(pos);
+                //player.startSleepInBed(pos);
                 /*while(!player.isSleepingLongEnough()){
                     if(player.isHurt()){
                         player.stopSleeping();
                     }
                 }*/
-                player.stopSleeping();
             //}
         }
         return super.use(state, level, pos, player, hand, hitResult);
