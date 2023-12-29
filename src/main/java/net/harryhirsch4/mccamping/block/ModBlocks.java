@@ -1,6 +1,7 @@
 package net.harryhirsch4.mccamping.block;
 
 import net.harryhirsch4.mccamping.MCCamping;
+import net.harryhirsch4.mccamping.block.custom.Tent;
 import net.harryhirsch4.mccamping.item.ModCreativeModeTab;
 import net.harryhirsch4.mccamping.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -20,9 +21,11 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, MCCamping.MOD_ID);
 
-    public static final RegistryObject<Block> Tent= registerBlock("tent",
-            () -> new Block(BlockBehaviour.Properties.of(Material.WOOL)
-                    .requiresCorrectToolForDrops()), ModCreativeModeTab.CAMPING_TAB);
+    public static final RegistryObject<Block> TENT= registerBlock("tent",
+            () -> new Tent(BlockBehaviour.Properties.of(Material.WOOL)
+                    .noOcclusion()
+                    .lightLevel(state -> state.getValue(Tent.ISOPEN) ? 15 : 10)),
+            ModCreativeModeTab.CAMPING_TAB);
 
     private static<T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
     {
