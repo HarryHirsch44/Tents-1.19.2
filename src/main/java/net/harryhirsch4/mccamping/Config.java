@@ -10,7 +10,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
+import java.util.random.RandomGenerator;
 import java.util.stream.Collectors;
 
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
@@ -26,7 +28,7 @@ public class Config
 
     private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
             .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+            .defineInRange("magicNumber", 41, 0, Integer.MAX_VALUE);
 
     public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
             .comment("What you want the introduction message to be for the magic number")

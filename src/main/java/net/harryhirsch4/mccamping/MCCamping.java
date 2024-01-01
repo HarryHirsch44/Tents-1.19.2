@@ -3,6 +3,8 @@ package net.harryhirsch4.mccamping;
 import com.mojang.logging.LogUtils;
 import net.harryhirsch4.mccamping.block.ModBlocks;
 import net.harryhirsch4.mccamping.item.ModItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -24,6 +26,7 @@ public class MCCamping {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public MCCamping() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
@@ -36,16 +39,16 @@ public class MCCamping {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
+    private void clientSetup (final FMLClientSetupEvent event){
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WHITE.get(), RenderType.cutout());
+    }
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 
-        if (Config.logDirtBlock)
-            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
 
 

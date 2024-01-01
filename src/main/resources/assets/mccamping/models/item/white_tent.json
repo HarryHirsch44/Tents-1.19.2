@@ -1,0 +1,6 @@
+{
+  "parent": "mccamping:block/tent_open",
+  "textures": {
+    "particle": "minecraft:block/white_wool"
+  }
+}

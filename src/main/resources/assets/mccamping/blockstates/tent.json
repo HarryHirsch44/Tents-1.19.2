@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "isopen=true": { "model":  "mccamping:block/tent_open"},
-    "isopen=false": { "model":  "mccamping:block/tent_closed"}
-  }
-}
