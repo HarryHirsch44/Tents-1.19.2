@@ -41,6 +41,21 @@ public class MCCamping {
 
     private void clientSetup (final FMLClientSetupEvent event){
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WHITE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_LIGHT_GRAY.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_GRAY.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_BLACK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_BROWN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_RED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_ORANGE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_YELLOW.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_LIME.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_GREEN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_CYAN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_LIGHT_BLUE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_BLUE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_PURPLE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_MAGENTA.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_PINK.get(), RenderType.cutout());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

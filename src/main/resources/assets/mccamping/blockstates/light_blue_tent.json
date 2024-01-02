@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,occupied=false,part=foot": {
-      "model": "mccamping:block/white_tent_open",
+      "model": "mccamping:block/light_blue_tent_open",
       "y": 180
     },
     "facing=north,occupied=true,part=foot": {
-      "model": "mccamping:block/white_tent_closed",
+      "model": "mccamping:block/light_blue_tent_closed",
       "y": 180
     },
     "facing=east,occupied=false,part=foot": {
-      "model": "mccamping:block/white_tent_open",
+      "model": "mccamping:block/light_blue_tent_open",
       "y": 270
     },
     "facing=east,occupied=true,part=foot": {
-      "model": "mccamping:block/white_tent_closed",
+      "model": "mccamping:block/light_blue_tent_closed",
       "y": 270
     },
     "facing=south,occupied=false,part=foot": {
-      "model": "mccamping:block/white_tent_open"
+      "model": "mccamping:block/light_blue_tent_open"
     },
     "facing=south,occupied=true,part=foot": {
-      "model": "mccamping:block/white_tent_closed"
+      "model": "mccamping:block/light_blue_tent_closed"
     },
     "facing=west,occupied=false,part=foot": {
-      "model": "mccamping:block/white_tent_open",
+      "model": "mccamping:block/light_blue_tent_open",
       "y": 90
     },
     "facing=west,occupied=true,part=foot": {
-      "model": "mccamping:block/white_tent_closed",
+      "model": "mccamping:block/light_blue_tent_closed",
       "y": 90
     },
     "part=head": {

@@ -2,8 +2,22 @@
   "item.mccamping.marshmallow": "Marshmallow",
   "item.mccamping.raw_marshmallow": "Raw Marshmallow",
 
-  "block.mccamping.tent": "Tent",
   "block.mccamping.white_tent": "White Tent",
+  "block.mccamping.light_gray_tent": "Light Gray Tent",
+  "block.mccamping.gray_tent": "Gray Tent",
+  "block.mccamping.black_tent": "Black Tent",
+  "block.mccamping.brown_tent": "Brown Tent",
+  "block.mccamping.red_tent": "Red Tent",
+  "block.mccamping.orange_tent": "Orange Tent",
+  "block.mccamping.yellow_tent": "Yellow Tent",
+  "block.mccamping.lime_tent": "Lime Tent",
+  "block.mccamping.green_tent": "Green Tent",
+  "block.mccamping.cyan_tent": "Cyan Tent",
+  "block.mccamping.light_blue_tent": "Light Blue Tent",
+  "block.mccamping.blue_tent": "Blue Tent",
+  "block.mccamping.purple_tent": "Purple Tent",
+  "block.mccamping.magenta_tent": "Magenta Tent",
+  "block.mccamping.pink_tent": "Pink Tent",
 
   "itemGroup.camping": "Camping"
 }

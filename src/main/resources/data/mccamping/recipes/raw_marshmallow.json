@@ -1,18 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "   ",
-    "ss ",
-    "sw "
-  ],
-  "key":{
-    "s": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "minecraft:sugar"
     },
-    "w": {
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
       "item": "minecraft:water_bucket"
     }
-  },
+  ],
   "result": {
     "item": "mccamping:raw_marshmallow",
     "count": 3
