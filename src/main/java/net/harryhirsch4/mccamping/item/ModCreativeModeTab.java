@@ -8,7 +8,7 @@ public class ModCreativeModeTab {
     public static final CreativeModeTab CAMPING_TAB = new CreativeModeTab("camping") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModBlocks.TENT_WHITE.get());
+            return new ItemStack(ModBlocks.TENT_GREEN.get());
         }
     };
 }

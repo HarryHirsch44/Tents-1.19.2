@@ -1,33 +1,45 @@
 package net.harryhirsch4.mccamping.block.entity;
 
+import net.harryhirsch4.mccamping.block.ModBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BedBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class Tent extends BedBlock {
+    public static final ResourceLocation CONTENTS;
+
 
     public Tent(DyeColor color, Properties properties) {
         super(color, properties);
@@ -48,23 +60,20 @@ public class Tent extends BedBlock {
         } else if (player.isSpectator()) {
             return InteractionResult.CONSUME;
         } else {
-            BlockEntity entity = level.getBlockEntity(pos);
-            //if (entity instanceof BedBlockEntity) {
-                TentInventoryEntity tentEntity = new TentInventoryEntity(entity.getBlockPos(),entity.getBlockState());
-                    System.out.println("entity");
-                    player.openMenu(tentEntity);
-                    System.out.println("entity2");
-                    player.awardStat(Stats.OPEN_SHULKER_BOX);
-                    System.out.println("entity3");
-
-                    PiglinAi.angerNearbyPiglins(player, true);
+            if (state.getValue(PART) != BedPart.FOOT){
+                pos = pos.relative((Direction)state.getValue(FACING));
+            }
+                BlockEntity entity = level.getBlockEntity(pos);
+            if (entity instanceof TentBlockEntity) {
+                TentBlockEntity tent = (TentBlockEntity)entity;
+                player.openMenu(tent);
+                player.awardStat(Stats.OPEN_SHULKER_BOX);
+                PiglinAi.angerNearbyPiglins(player, true);
 
                 return InteractionResult.CONSUME;
-           // } else {
-                //return InteractionResult.PASS;
-            //}
+            }
         }
-        //Detect sneaking of player
+        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -79,5 +88,100 @@ public class Tent extends BedBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new TentBlockEntity(pos,state);
+    }
+
+    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if (state.getValue(PART) != BedPart.FOOT){
+            pos = pos.relative((Direction)state.getValue(FACING));
+        }
+        BlockEntity entity = level.getBlockEntity(pos);
+        if (entity instanceof TentBlockEntity $$5) {
+            if (!level.isClientSide && player.isCreative() && !$$5.isEmpty() && state.getValue(PART) == BedPart.FOOT) {
+                ItemStack $$6 = getColoredItemStack(this.getColor());
+                entity.saveToItem($$6);
+                if ($$5.hasCustomName()) {
+                    $$6.setHoverName($$5.getCustomName());
+                }
+
+                ItemEntity $$7 = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, $$6);
+                $$7.setDefaultPickUpDelay();
+                level.addFreshEntity($$7);
+            } else {
+                $$5.unpackLootTable(player);
+            }
+        }
+    }
+
+    public static ItemStack getColoredItemStack(@Nullable DyeColor p_56251_) {
+        return new ItemStack(getBlockByColor(p_56251_));
+    }
+
+    public static Block getBlockByColor(@Nullable DyeColor p_56191_) {
+        if (p_56191_ == null) {
+            return ModBlocks.TENT_WHITE.get();
+        } else {
+            switch (p_56191_) {
+                case WHITE:
+                default:
+                    return ModBlocks.TENT_WHITE.get();
+                case ORANGE:
+                    return ModBlocks.TENT_ORANGE.get();
+                case MAGENTA:
+                    return ModBlocks.TENT_MAGENTA.get();
+                case LIGHT_BLUE:
+                    return ModBlocks.TENT_LIGHT_BLUE.get();
+                case YELLOW:
+                    return ModBlocks.TENT_YELLOW.get();
+                case LIME:
+                    return ModBlocks.TENT_LIME.get();
+                case PINK:
+                    return ModBlocks.TENT_PINK.get();
+                case GRAY:
+                    return ModBlocks.TENT_GRAY.get();
+                case LIGHT_GRAY:
+                    return ModBlocks.TENT_LIGHT_GRAY.get();
+                case CYAN:
+                    return ModBlocks.TENT_CYAN.get();
+                case PURPLE:
+                    return ModBlocks.TENT_PURPLE.get();
+                case BLUE:
+                    return ModBlocks.TENT_BLUE.get();
+                case BROWN:
+                    return ModBlocks.TENT_BROWN.get();
+                case GREEN:
+                    return ModBlocks.TENT_GREEN.get();
+                case RED:
+                    return ModBlocks.TENT_RED.get();
+                case BLACK:
+                    return ModBlocks.TENT_BLACK.get();
+            }
+        }
+    }
+
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        if(state.getValue(PART) != BedPart.FOOT)
+        {
+            return Collections.emptyList();
+        }
+        BlockEntity $$2 = (BlockEntity)builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+        if ($$2 instanceof TentBlockEntity $$3) {
+            builder = builder.withDynamicDrop(CONTENTS, (p_56218_, p_56219_) -> {
+                for(int $$3x = 0; $$3x < $$3.getContainerSize(); ++$$3x) {
+                    p_56219_.accept($$3.getItem($$3x));
+                }
+
+            });
+        }
+
+        return super.getDrops(state, builder);
+    }
+
+    static {
+        CONTENTS = new ResourceLocation("contents");
     }
 }

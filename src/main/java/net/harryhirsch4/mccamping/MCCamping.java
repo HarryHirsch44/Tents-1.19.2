@@ -2,6 +2,7 @@ package net.harryhirsch4.mccamping;
 
 import com.mojang.logging.LogUtils;
 import net.harryhirsch4.mccamping.block.ModBlocks;
+import net.harryhirsch4.mccamping.block.entity.ModBlockEntities;
 import net.harryhirsch4.mccamping.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -31,6 +32,7 @@ public class MCCamping {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

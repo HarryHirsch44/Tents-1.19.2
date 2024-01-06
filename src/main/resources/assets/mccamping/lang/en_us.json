@@ -19,5 +19,7 @@
   "block.mccamping.magenta_tent": "Magenta Tent",
   "block.mccamping.pink_tent": "Pink Tent",
 
+  "container.tent": "Tent Bag",
+
   "itemGroup.camping": "Camping"
 }
