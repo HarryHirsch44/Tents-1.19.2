@@ -47,13 +47,13 @@ public class TentBlockEntity extends RandomizableContainerBlockEntity implements
     private int openCount;
 
     public TentBlockEntity(BlockPos p_155115_, BlockState p_155116_) {
-        super(ModBlockEntities.TENT_BLOCK.get(), p_155115_, p_155116_);
+        super(ModBlockEntities.TENT_WITH_CHEST_BLOCK.get(), p_155115_, p_155116_);
         this.color = ((BedBlock)p_155116_.getBlock()).getColor();
         this.itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
     }
 
     public TentBlockEntity(BlockPos p_155118_, BlockState p_155119_, DyeColor p_155120_) {
-        super(ModBlockEntities.TENT_BLOCK.get(), p_155118_, p_155119_);
+        super(ModBlockEntities.TENT_WITH_CHEST_BLOCK.get(), p_155118_, p_155119_);
         this.color = p_155120_;
     }
 

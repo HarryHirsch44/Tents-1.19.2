@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "tent",
+  "pattern": [
+    " c ",
+    "wsw",
+    "wbw"
+  ],
+  "key": {
+    "w": {
+      "tag": "minecraft:wool"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "b": {
+      "tag": "mccamping:shulker_box"
+    },
+    "c": {
+      "item": "minecraft:light_gray_dye"
+    }
+  },
+  "result": {
+    "item": "mccamping:light_gray_tent_with_chest"
+  }
+}

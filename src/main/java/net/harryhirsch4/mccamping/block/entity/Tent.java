@@ -14,16 +14,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BedBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -52,28 +47,7 @@ public class Tent extends BedBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if(!player.isCrouching()){
             return super.use(state, level, pos, player, hand, result);
-        }
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else if (player.isSpectator()) {
-            return InteractionResult.CONSUME;
-        } else {
-            if (state.getValue(PART) != BedPart.FOOT){
-                pos = pos.relative((Direction)state.getValue(FACING));
-            }
-                BlockEntity entity = level.getBlockEntity(pos);
-            if (entity instanceof TentBlockEntity) {
-                TentBlockEntity tent = (TentBlockEntity)entity;
-                player.openMenu(tent);
-                player.awardStat(Stats.OPEN_SHULKER_BOX);
-                PiglinAi.angerNearbyPiglins(player, true);
-
-                return InteractionResult.CONSUME;
-            }
-        }
-        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -82,17 +56,12 @@ public class Tent extends BedBlock {
     }
 
     private static final VoxelShape SHAPE = Stream.of(
-        Block.box(0,0,0,16,32,16)
+            Block.box(0,0,0,16,15.9,16)
     ).reduce((v1,v2) -> Shapes.join(v1,v2, BooleanOp.OR)).get();
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new TentBlockEntity(pos,state);
     }
 
     public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {

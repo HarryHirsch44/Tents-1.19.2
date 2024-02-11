@@ -58,14 +58,27 @@ public class MCCamping {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_PURPLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_MAGENTA.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_PINK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_WHITE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_LIGHT_GRAY.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_GRAY.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_BLACK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_BROWN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_RED.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_ORANGE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_YELLOW.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_LIME.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_GREEN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_CYAN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_LIGHT_BLUE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_BLUE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_PURPLE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_MAGENTA.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TENT_WITH_CHEST_PINK.get(), RenderType.cutout());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
     }
 
 
